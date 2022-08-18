@@ -40,14 +40,12 @@ app.use(
 
 
 
-const Home = require('./routers/homeRouter')
-const Product = require('./routers/product')
-const Category = require('./routers/category')
+const client = require('./routers/index')
+const admin = require('./routers/admin/index')
 
 
-app.use('/', Home)
-app.use('/product', Product)
-app.use('/category', Category)
+app.use('/', client)
+app.use('/admin', admin)
 
 try {
   const port = normalizePort(process.env.PORT || 3000);

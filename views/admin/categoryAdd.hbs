@@ -1,0 +1,25 @@
+{{!-- <div class="container">
+    <form action="/category/add" method="post" >
+        <input type="text" name="name" placeholder="Name">
+        <input type="submit">
+    </form>
+</div> --}}
+
+<div class="container-fluid">
+    <div class="row justify-content-start">
+        <div class="col-md-4">
+            <form action="/admin/category/add" method="post">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="name">Category name</label>
+                        <input type="text" class="form-control" name="name" id="name"
+                            placeholder="Name">
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

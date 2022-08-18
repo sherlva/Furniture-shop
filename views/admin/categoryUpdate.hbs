@@ -1,0 +1,32 @@
+{{!-- <div class="container">
+    <form action="/category/update/{{category._id}}" method="post">
+        <input type="text" name="name" placeholder="Name" value={{category.name}}>
+        <input type="submit">
+    </form>
+</div> --}}
+
+
+<div class="container-fluid">
+  <div class="row justify-content-start">
+    <div class="col-md-4">
+      <form action="/admin/category/update/{{category._id}}" method="post">
+        <div class="card-body">
+          <div class="form-group">
+            <label for="name">Category name</label>
+            <input
+              value="{{category.name}}"
+              type="text"
+              class="form-control"
+              name="name"
+              id="name"
+              placeholder="Name"
+            />
+          </div>
+        </div>
+        <div class="card-footer">
+          <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

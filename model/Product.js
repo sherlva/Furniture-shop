@@ -22,7 +22,7 @@ const productSchema = new Schema({
     },
     img: {
         type: String,
-        default: "../public/assets/images/collection/arrivals2.png",
+        default: "/assets/images/collection/arrivals2.png",
     },
 });
 module.exports = model("products", productSchema);

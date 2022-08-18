@@ -1,0 +1,45 @@
+
+
+<div class="container-fluid">
+  <div class="row justify-content-start">
+    <div class="col-md-4">
+      <form action="/admin/products/add" method="post">
+        <div class="card-body">
+          <div class="form-group">
+            <label for="Name">Name</label>
+            <input type="text" class="form-control" name="name" id="Name" />
+          </div>
+          {{!-- <div class="form-group">
+            <label for="img">Img</label>
+            <input type="text" class="form-control" name="img" id="img" />
+          </div> --}}
+          <div class="form-group">
+            <label for="Price">Price</label>
+            <input type="number" class="form-control" name="price" id="Price" />
+          </div>
+          <div class="form-group">
+            <label for="discount">Discount</label>
+            <input type="number" class="form-control" name="discount" id="discount" />
+          </div>
+          <div class="form-group">
+            <label for="brand">Brand</label>
+            <input type="text" class="form-control" name="brand" id="brand" />
+          </div>
+          <div class="form-group">
+            <label for="Category">Category</label>
+            <select class="form-control" name="category" id="Category">
+              {{#each categories}}
+                <option value="{{_id}}">{{name}}</option>
+              {{/each}}
+            </select>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+

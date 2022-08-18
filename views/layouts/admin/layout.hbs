@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> admin/head}}
+
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+        {{> admin/preloader}}
+        {{> admin/nav}}
+        {{> admin/aside}}
+        <div class="content-wrapper">
+            {{{body}}}
+        </div>
+    </div>
+
+
+    {{> admin/scripts}}
+</body>
+
+</html>
