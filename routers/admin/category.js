@@ -7,7 +7,7 @@ router.get('/', async(req,res)=>{
   
   res.render("admin/categories", {
     title: "Category add",
-    layout: "admin/layout",
+    layout: "admin",
     categories
   });
 })
@@ -15,7 +15,7 @@ router.get('/', async(req,res)=>{
 router.get("/add", async (req, res) => {
   res.render("admin/categoryAdd", {
     title: "Category add",
-    layout: "admin/layout",
+    layout: "admin",
   });
 });
 
@@ -33,7 +33,7 @@ router.get("/update/:id", async (req, res) => {
   const category = await Categories.findById(req.params.id);
   res.render("admin/categoryUpdate", {
     title: "Category Update",
-    layout: "admin/layout",
+    layout: "admin",
     category,
   });
 });

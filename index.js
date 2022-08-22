@@ -1,11 +1,11 @@
-const express = require('express')
-const { create } = require('express-handlebars')
-const path = require('path')
-const session = require('express-session')
+const express = require("express");
+const { create } = require("express-handlebars");
+const path = require("path");
+const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
-require('dotenv').config()
+require("dotenv").config();
 
-const app = express()
+const app = express();
 const hbs = create({
   extname: "hbs",
   defaultLayout: "layout",
@@ -15,13 +15,11 @@ const hbs = create({
   },
 });
 
-
 require("./helper/db")();
 const store = new MongoDBStore({
   uri: process.env.MONGO_URI,
   collection: "mySession",
 });
-
 
 app.engine("hbs", hbs.engine);
 app.set("view engine", "hbs");
@@ -38,14 +36,14 @@ app.use(
   })
 );
 
+const client = require("./routers/index");
+const admin = require("./routers/admin/index");
+const auth = require("./routers/admin/auth");
+const Auth = require('./middleware/auth.js')
 
-
-const client = require('./routers/index')
-const admin = require('./routers/admin/index')
-
-
-app.use('/', client)
-app.use('/admin', admin)
+app.use("/", client);
+app.use("/admin/auth",  auth);
+app.use("/admin", Auth , admin);
 
 try {
   const port = normalizePort(process.env.PORT || 3000);

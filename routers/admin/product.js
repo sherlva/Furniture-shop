@@ -2,29 +2,40 @@ const express = require("express");
 const router = express.Router();
 const Product = require("../../model/Product");
 const Categories = require("../../model/Category");
+const upload = require("../../middleware/upload");
 
 router.get("/", async (req, res) => {
   const products = await Product.find();
 
   res.render("admin/products", {
-    title: "Category add",
-    layout: "admin/layout",
+    title: "Product add",
+    layout: "admin",
     products,
   });
 });
 
-router.get("/add", async (req, res) => {
+router.get("/add",  async (req, res) => {
   const categories = await Categories.find();
 
   res.render("admin/productAdd", {
     title: "add",
-    layout: "admin/layout",
+    layout: "admin",
     categories,
   });
 });
 
-router.post("/add", async (req, res) => {
+router.post("/add",upload.single("img"), async (req, res) => {
+
+  if (!req.file) {
+    console.log("Img is not picked");
+    res.redirect("/admin/product/add");
+    return;
+  }
+
+  req.body.img = "/uploads/" + req.file.filename;
+
   const product = new Product(req.body);
+
   try {
     await product.save();
   } catch (error) {
@@ -38,7 +49,7 @@ router.get("/update/:id", async (req, res) => {
   const categories = await Categories.find();
   res.render("admin/productUpdate", {
     title: "PRoduct Update",
-    layout: "admin/layout",
+    layout: "admin",
     product,
     categories,
   });

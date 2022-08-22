@@ -3,9 +3,9 @@ const router = express.Router();
 
 // index route === /admin
 router.get("/", (req, res) => {
-  res.render("admin", { 
+  res.render("admin", {
     title: "Admin panel",
-    layout: "admin/layout",
+    layout: "admin",
   });
 });
 
@@ -14,5 +14,6 @@ router.use("/products", require("./product"));
 
 // categories
 router.use("/category", require("./category"));
+ 
 
 module.exports = router;
