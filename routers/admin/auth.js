@@ -14,7 +14,7 @@ router.get("/login", (req, res) => {
 
 // Logout
 router.get("/logout", async (req, res) => {
-  await req.session.destroy((err) => {
+  req.session.destroy((err) => {
     if (err) throw err;
     res.redirect("/");
   });
